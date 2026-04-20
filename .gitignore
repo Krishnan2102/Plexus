@@ -1,5 +1,17 @@
-.env/
-data/
-node_modules/
+# Python
+venv/
 __pycache__/
-.DS_Store
+*.py[cod]
+.env
+
+# React / Node
+node_modules/
+dist/
+.eslintcache
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Neo4j
+# (Usually not needed if you aren't storing the DB inside the folder)

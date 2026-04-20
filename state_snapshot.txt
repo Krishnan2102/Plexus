@@ -1,0 +1,52 @@
+Plexus Project: Master Revival Prompt (Windows 11 Edition)
+Instruction to AI: "I am resuming work on Plexus, a Corporate Intelligence GraphRAG platform. You are my lead AI architect. Below is the technical DNA of the project. Study it to understand our current state before we begin upgrading."
+
+1. Project Essence
+Name: Plexus
+
+Goal: A decision-support tool that transforms unstructured PDF reports into a navigable 3D Knowledge Graph and allows natural language querying via GraphRAG.
+
+Context: Currently focused on intelligence reports (e.g., Manipur/Security forces).
+
+2. Tech Stack (The "Bones")
+Backend: FastAPI (Python), Uvicorn.
+
+Database: Neo4j (Local Desktop).
+
+AI Engine: Gemini (Google Generative AI), LangChain, LangChain-Neo4j.
+
+Frontend: React (Vite), Axios, react-force-graph-3d, Three.js, three-spritetext.
+
+OS Environment: Windows 11 (Native PowerShell/CMD).
+
+3. Technical Architecture & Logic
+Ingestion Pipeline: Uses LLMGraphTransformer to convert PDF text into nodes and relationships.
+
+Schema Rule (CRITICAL): Nodes do NOT use a name property. The entity name is stored in id. Relationships use a text property for source context.
+
+Retriever Logic: Uses GraphCypherQAChain with a custom CYPHER_GENERATION_TEMPLATE that explicitly tells the LLM to query n.id instead of n.name.
+
+3D Visualization: * Nodes use SpriteText for permanent floating labels.
+
+nodeThreeObjectExtend is set to true to keep spheres visible.
+
+Links use cyan "energy" particles (linkDirectionalParticles) to show data flow.
+
+4. Current API Endpoints
+GET /graph: Returns JSON nodes/links for the 3D renderer.
+
+POST /chat: Receives {message: string}, triggers the Cypher retriever, and returns a summarized intelligence report.
+
+5. Development Workflow (Windows 11)
+Backend Start: .\venv\Scripts\Activate then python main.py.
+
+Testing: Use Invoke-RestMethod in PowerShell for API verification (standard curl often fails with JSON formatting on Windows).
+
+Frontend Start: npm run dev in the frontend folder.
+
+6. Future Roadmap
+Multi-PDF Support: Folder-wide ingestion watcher.
+
+Hybrid RAG: Adding Vector Indexing to the Graph nodes.
+
+Source Traceability: Linking chat answers back to specific PDF page numbers.
