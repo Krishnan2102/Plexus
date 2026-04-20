@@ -9,7 +9,7 @@ load_dotenv()
 graph = Neo4jGraph()
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
 
-# 1. This template forces Gemini to use your specific property names
+
 CYPHER_GENERATION_TEMPLATE = """
 Task: Generate a Cypher statement to query a graph database.
 Instructions:
@@ -29,7 +29,7 @@ CYPHER_PROMPT = PromptTemplate(
     template=CYPHER_GENERATION_TEMPLATE
 )
 
-# 2. Re-build the chain with the new prompt
+
 chain = GraphCypherQAChain.from_llm(
     llm=llm, 
     graph=graph, 
