@@ -10,7 +10,7 @@ load_dotenv()
 app = FastAPI()
 graph = Neo4jGraph()
 
-# Allow your React frontend to talk to this backend
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -20,7 +20,7 @@ app.add_middleware(
 
 @app.get("/graph")
 def get_graph_data():
-    # This Cypher query fetches everything in a format React understands
+   
     query = """
     MATCH (n)-[r]->(m)
     RETURN 
@@ -35,7 +35,7 @@ def get_graph_data():
 class ChatRequest(BaseModel):
     message: str
 
-# Add this endpoint
+
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
     response = ask_plexus(request.message)
